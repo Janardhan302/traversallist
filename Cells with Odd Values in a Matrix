@@ -1,0 +1,17 @@
+class Solution:
+ def oddCells(self, m: int, n: int, indices: List[List[int]]) -> int:
+ matrix = [[0] * n for _ in range(m)]
+ for r, c in indices:
+ # Increment entire row r
+ for col in range(n):
+ matrix[r][col] += 1
+ # Increment entire column c
+ for row in range(m):
+ matrix[row][c] += 1
+ # Count odd values
+ count = 0
+ for i in range(m):
+ for j in range(n):
+ if matrix[i][j] % 2 == 1:
+ count += 1
+ return count
