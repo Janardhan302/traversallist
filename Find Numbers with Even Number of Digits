@@ -1,0 +1,17 @@
+class Solution:
+ def findNumbers(self, nums: List[int]) -> int:
+ count = 0
+ for num in nums:
+ # Count digits by repeatedly dividing by 10
+ digit_count = 0
+ temp = num
+ # Handle the case when num is 0
+ if temp == 0:
+ digit_count = 1
+ else:
+ while temp > 0:
+ temp //= 10
+ digit_count += 1
+ if digit_count % 2 == 0:
+ count += 1
+ return count
