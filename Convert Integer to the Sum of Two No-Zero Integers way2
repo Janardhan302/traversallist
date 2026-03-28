@@ -1,0 +1,17 @@
+class Solution:
+ def getNoZeroIntegers(self, n: int) -> List[int]:
+ def has_zero(num):
+ # Check if number contains digit 0
+ while num > 0:
+ if num % 10 == 0:
+ return True
+ num //= 10
+ return False
+ for a in range(1, n):
+ b = n - a
+ if not has_zero(a) and not has_zero(b):
+ return [a, b]
+ # The problem guarantees a solution exists, so we'll never reach here
+ return []
+
+        
