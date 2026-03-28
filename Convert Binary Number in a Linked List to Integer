@@ -1,0 +1,10 @@
+class Solution:
+ def getDecimalValue(self, head: Optional[ListNode]) -> int:
+ result = 0
+ # Traverse the linked list
+ current = head
+ while current:
+ # Shift left (multiply by 2) and add current bit
+ result = result * 2 + current.val
+ current = current.next
+ return result
