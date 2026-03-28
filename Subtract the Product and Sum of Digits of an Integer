@@ -1,0 +1,11 @@
+class Solution:
+ def subtractProductAndSum(self, n: int) -> int:
+ product = 1
+ total_sum = 0
+ # Process each digit
+ while n > 0:
+ digit = n % 10 # Get last digit
+ product *= digit
+ total_sum += digit
+ n //= 10 # Remove last digit
+ return product - total
