@@ -1,0 +1,38 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        original_color = image[sr][sc] 
+        if original_color == color: 
+            return image 
+        m, n = len(image), len(image[0]) 
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)] 
+        queue = deque([(sr, sc)]) 
+        while queue: 
+            r, c = queue.popleft() 
+            image[r][c] = color 
+            for dr, dc in directions:                 
+                nr, nc = r + dr, c + dc                
+                if 0 <= nr < m and 0 <= nc < n and image[nr][nc] == original_color: 
+                    queue.append((nr, nc)) 
+        return image 
+ 
+def main(): 
+    sol = Solution() 
+    img1 = [[1,1,1], [1,1,0],[1,0,1]] 
+    print("Input:") 
+    for row in img1:     
+        print(row)   
+        result1 = sol.floodFill([row[:] for row in img1], 1, 1, 2)   
+        print("Output:")   
+    for row in result1:       
+        print(row)
+        print()      
+        img2 = [[0,0,0], [0,0,0]]     
+        print("Input:")     
+        for row in img2:         
+            print(row)     
+            result2 = sol.floodFill([row[:] for row in img2], 0, 0, 0)     
+            print("Output:")     
+            for row in result2: 
+                print(row)
+                if __name__ == "__main__":    
+                     main() 
