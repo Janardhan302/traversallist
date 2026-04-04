@@ -1,0 +1,21 @@
+class Solution:
+    def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
+        m, n = len(mat), len(mat[0])  
+        if m * n != r * c:            
+            return mat 
+            reshaped = [[0] * c for _ in range(r)] 
+            for i in range(m * n): 
+                reshaped[i // c][i % c] = mat[i // n][i % n] 
+            return reshaped 
+ 
+def main(): 
+    sol = Solution() 
+    mat1 = [[1, 2], [3, 4]]    
+    print(sol.matrixReshape(mat1, 1, 4))  # [[1, 2, 3, 4]] 
+    print(sol.matrixReshape(mat1, 2, 4))  # [[1, 2], [3, 4]] 
+    mat2 = [[5]]    
+    print(sol.matrixReshape(mat2, 1, 1))  
+    mat3 = [[1, 2], [3, 4], [5, 6]]    
+    print(sol.matrixReshape(mat3, 2, 3))
+    if __name__ == "__main__":     
+        main() 
