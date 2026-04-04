@@ -1,0 +1,40 @@
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        m	= len(img) 
+        n	= len(img[0]) 
+        directions = [(-1, -1),(-1, 0),(-1, 1),
+                    (0, -1),(0, 0),(0, 1), 
+                    (1, -1),(1, 0),(1, 1) ] 
+         
+        result = [[0] * n for _ in range(m)] 
+        for i in range(m):             
+            for j in range(n):                 
+                total = 0                 
+                count = 0 
+                for di,dj in directions:                    
+                    ni, nj = i + di,j + dj                  
+                    if 0 <= ni < m and 0 <= nj < n: 
+                        total += img[ni][nj] 
+                        count += 1 
+                        result[i][j] = total // count 
+                    return result 
+ 
+def main():     
+    sol = Solution() 
+    img1 = [[1,1,1], [1,0,1],[1,1,1]]     
+    print("Input:")     
+    for row in img1:         
+        print(row)     
+        print("Output:")     
+        for row in sol.imageSmoother(img1): 
+            print(row) 
+            print() 
+    img2 = [[100,200,100], [200,50,200],[100,200,100]] 
+    print("Input:") 
+    for row in img2:       
+        print(row)   
+        print("Output:")   
+        for row in sol.imageSmoother(img2): 
+            print(row) 
+            if __name__ == "__main__":  
+                main() 
