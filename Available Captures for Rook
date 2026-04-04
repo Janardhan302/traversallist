@@ -1,0 +1,23 @@
+class Solution:
+    def numRookCaptures(self, board: List[List[str]]) -> int:
+        rook_r = rook_c = -1         
+        for i in range(8):             
+            for j in range(8):                 
+                if board[i][j] == 'R':                     
+                    rook_r, rook_c = i, j 
+                    break             
+                if rook_r != -1: 
+                    break 
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]        
+        captures = 0 
+        for dr, dc in directions: 
+            r, c = rook_r + dr, rook_c + dc            
+            while 0 <= r < 8 and 0 <= c < 8: 
+                if board[r][c] == 'p':                 
+                    captures += 1 
+                    break             
+                elif board[r][c] != '.':               
+                    break 
+            r += dr 
+            c += dc 
+     
