@@ -1,0 +1,48 @@
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        m, n = len(matrix), len(matrix[0]) 
+  	    transposed = [[0] * m for _ in range(n)] 
+        for i in range(m):           
+            for j in range(n): 
+                transposed[j][i] = matrix[i][j] 
+        return transposed 
+    def transposeListComp(self, matrix): 
+        return [[matrix[i][j] for i in range(len(matrix))] for j in range(len(matrix[0]))] 
+    def transposeZip(self, matrix): 
+        return [list(row) for row in zip(*matrix)] 
+def main(): 
+    sol = Solution() 
+    matrix1 = [[1,2,3], [4,5,6],[7,8,9]]     
+    print("Input:")     
+    for row in matrix1:         
+        print(row)     
+        print("Transpose:")     
+        for row in sol.transpose(matrix1): 
+            print(row) 
+            print() 
+    matrix2 = [[1,2,3], [4,5,6]]     
+    print("Input:")     
+    for row in matrix2:         
+        print(row)     
+        print("Transpose:")     
+        for row in sol.transpose(matrix2): 
+            print(row) 
+            print() 
+    matrix3 = [[1, 2, 3]] 
+    print("Input:", matrix3) 
+    print("Transpose:", sol.transpose(matrix3)) 
+    print() 
+    matrix4 = [[1], [2], [3]]   
+    print("Input:", matrix4)   
+    print("Transpose:", sol.transpose(matrix4))   
+    print() 
+    matrix5 = [[42]]   
+    print("Input:", matrix5)   
+    print("Transpose:", sol.transpose(matrix5))     
+    print() 
+    print("Using zip method (Test case 1):") 
+    print(sol.transposeZip(matrix1)) 
+    if __name__ == "__main__":    
+         main() 
+
+
