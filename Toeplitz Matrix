@@ -1,0 +1,32 @@
+class Solution:
+    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+        m	= len(matrix) 
+        n	= len(matrix[0]) 
+        for i in range(m - 1):             
+            for j in range(n - 1):                 
+                if matrix[i][j] != matrix[i + 1][j + 1]: 
+                    return False 
+         
+        return True 
+ 
+def main(): 
+    sol = Solution()      
+    matrix1 = [ 
+    [1, 2, 3, 4], 
+    [5, 1, 2, 3], 
+    [9, 5, 1, 2] 
+] 
+    print(f"Matrix 1: {sol.isToeplitzMatrix(matrix1)}")   
+    matrix2 = [   	  [1, 2], 
+      [2, 2]   ] 
+    print(f"Matrix 2: {sol.isToeplitzMatrix(matrix2)}") 
+   
+    matrix3 = [[5]] 
+    print(f"Matrix 3: {sol.isToeplitzMatrix(matrix3)}")  
+     
+    matrix4 = [[1, 2, 3, 4]]     
+    print(f"Matrix 4: {sol.isToeplitzMatrix(matrix4)}") 
+    matrix5 = [[1], [2], [3], [4]]     
+    print(f"Matrix 5: {sol.isToeplitzMatrix(matrix5)}")  
+    if __name__ == "__main__":     
+        main() 
